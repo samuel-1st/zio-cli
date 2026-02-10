@@ -64,7 +64,11 @@ object CliAppSpec extends ZIOSpecDefault {
         assertZIO(result.exit)(
           fails(
             isSubtype[CliError.Parsing](
-              hasField("e", (e: CliError.Parsing) => e.e.error.toPlaintext(color = false), containsString("Unexpected argument(s): abc"))
+              hasField(
+                "e",
+                (e: CliError.Parsing) => e.e.error.toPlaintext(color = false),
+                containsString("Unexpected argument(s): abc")
+              )
             )
           )
         )
